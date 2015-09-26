@@ -22,12 +22,12 @@ Password = yourpassword
 If you keep your configuration file in home of the docker host,
 then any mega command can be run with:
 ```
-docker run -ti --rm -v=$HOME/.megarc:/.megarc megatools-docker <COMMAND>
+docker run -ti --rm -v=$HOME/.megarc:/.megarc tomzo/megatools-docker <COMMAND>
 ```
 
 To verify that your configuration is working you can run
 ```
-docker run -ti --rm -v=$HOME/.megarc:/.megarc megatools-docker megadf
+docker run -ti --rm -v=$HOME/.megarc:/.megarc tomzo/megatools-docker megadf
 ```
 
 ### Example
@@ -35,7 +35,7 @@ docker run -ti --rm -v=$HOME/.megarc:/.megarc megatools-docker megadf
 Uploading `$HOME/myfiles` folder using docker volumes and the `/bin/megaupload` script.
 
 ```
-docker run -ti --rm -v=$HOME/.megarc:/.megarc -v=$HOME/myfiles:/upload megatools-docker /bin/megaupload
+docker run -ti --rm -v=$HOME/.megarc:/.megarc -v=$HOME/myfiles:/upload tomzo/megatools-docker /bin/megaupload
 ```
 
 ## Links
