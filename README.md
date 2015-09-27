@@ -35,7 +35,23 @@ docker run -ti --rm -v=$HOME/.megarc:/.megarc tomzo/megatools-docker megadf
 Uploading `$HOME/myfiles` folder using docker volumes and the `/bin/megaupload` script.
 
 ```
-docker run -ti --rm -v=$HOME/.megarc:/.megarc -v=$HOME/myfiles:/upload tomzo/megatools-docker /bin/megaupload
+docker run -ti --rm -v=$HOME/.megarc:/.megarc -v=$HOME/myfiles:/Root tomzo/megatools-docker /bin/megaupload
+```
+
+## Synchronization
+
+Megatools do not support synchronization of folders. The `megafs` allows
+only read-only mount. `megaupload` uploads only new files.
+
+In this container you can find **very simple** `megasync` script.
+It allows to upload files and folders and **delete** ones that no longer exist locally.
+It fits into use cases when all files are **immutable**.
+
+**WARNING: do not use this on important data, this script does DELETE files and folder in your MEGA account**
+
+Example use - synchronize `/tmp/myfiles` with remote directory `/Root/mysync`:
+```
+docker run -ti --rm -v=$HOME/.megarc:/.megarc -v='/tmp/myfiles:/Root/mysync' tomzo/megatools-docker /bin/megasync mysync
 ```
 
 ## Links

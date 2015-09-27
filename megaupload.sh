@@ -7,10 +7,10 @@ fi
 
 DIR=$1
 
-if [ ! -d "/upload" ]; then
-  echo "Please mount directory you wish to upload using docker -v='/my/path/:/upload'"
+if [ ! -d "/Root/$DIR" ]; then
+  echo "Please mount directory you wish to upload using docker -v='/my/path/:/Root/$DIR'"
   exit 1
 fi
 
 megamkdir /Root/$DIR
-megacopy --local=/upload --remote=/Root/$DIR
+megacopy --local=/Root/$DIR --remote=/Root/$DIR
